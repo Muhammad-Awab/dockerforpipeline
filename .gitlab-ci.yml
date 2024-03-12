@@ -1,0 +1,33 @@
+variables:
+  HTTP_PROXY: "http://proxy.fi.upm.es:8080"
+
+stages:
+  #- testing
+  - build
+  #- deploy
+
+#testing:
+  # A definir por los equipos de QA de cada Squad
+  
+
+build:
+  stage: build
+  image: python:3.11.1-slim
+  allow_failure: true
+  script:
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip3 install --upgrade pip --proxy=$HTTP_PROXY
+    - pip3 install -r requirements.txt --proxy=$HTTP_PROXY
+
+  tags:
+    - docexec
+
+#deploy:
+#    stage: deploy
+#    script:
+#        - docker-compose --file ${DOCKER_COMPOSE_FILE_PATH} up --detach --build ${CI_PROJECT_NAME}
+#    tags:
+#      - shexec
+#    only:
+#      - main

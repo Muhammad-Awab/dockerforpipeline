@@ -1,0 +1,6 @@
+# Python==3.11.3
+# Para instalar esto ejecutar en el directorio donde se encuentre este fichero y ejecutar pip install -r requirements.txt
+
+fastapi==0.109.2
+pydantic==2.6.1
+uvicorn==0.27.1
